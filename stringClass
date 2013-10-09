@@ -1,0 +1,47 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.io.*;
+/**
+ * Author: Renato John Recio
+ * Date: 10/9/2013
+ * Program Specifications: Class designed to allow user to input
+ * and pass a full string that can be processed by the Java
+ * Robot library function method keyPress(int keycode).
+ * Rather than inputting a single keycode, this program allows
+ * a user to input a full string of keycodes, which will be 
+ * processed one by one until the full string is output.
+ * 
+ * Program Status: IN
+ * 
+ */
+public class StringBot
+{
+    Robot myRobot;
+    ArrayList<String> keyString;
+    
+    ArrayList<Integer> keyCommands;
+    //Constructor for new Robot
+    public StringBot(){
+        
+         myRobot = new Robot();
+         keyString = new ArrayList<String>();
+         keyCommands = new ArrayList<Integer>();
+      
+         
+    }
+    
+    //Constructor for Existing Robot.
+    public StringBot(Robot rbt){
+    
+        myRobot = rbt;
+        keyString = new ArrayList<String>();
+        keyCommands = new ArrayList<Integer>();
+    }
+    
+    //Method to process full String
+    public multipleKeyPress(String keys){
+        
+        
+    }
+}
