@@ -52,7 +52,7 @@ public class StringBotFinal
     //Constructor for Existing Robot.
     public StringBotFinal(Robot rbt) throws AWTException{
 
-       myRobot = new Robot();
+       myRobot = rbt;
 
         keyCommands= new int[43];
         int command = 65;
