@@ -1,0 +1,137 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.io.*;
+/**
+ * Author: Renato John Recio
+ * Date: 10/9/2013
+ * Program Specifications: Class designed to allow user to input
+ * and pass a full string that can be processed by the Java
+ * Robot library function method keyPress(int keycode).
+ * Rather than inputting a single keycode, this program allows
+ * a user to input a full string of keycodes, which will be 
+ * processed one by one until the full string is output.
+ * 
+ * Program Status: IN
+ * 
+ */
+public class StringBotFinal
+{
+    Robot myRobot;
+
+    String keyStringNonShift[];
+    String keyStringShift[];
+
+    int keyCommands[];
+    final String listOfAllNonShiftCharacters = "abcdefghijklmnopqrstuvwxyz[\\]1234567890*+-./";
+    final String listOfAllShiftCharacters = "{|}!@#$%^&*()=";
+
+    //Constructor for new Robot
+    public StringBotFinal() throws AWTException{
+
+        myRobot = new Robot();
+
+        keyCommands= new int[43];
+        int command = 65;
+        for (int i = 0; i < 29; i++){
+            keyCommands[i] = command;
+            command++;
+        }
+        command = 97;
+
+        for (int i = 29; i < 43; i++){
+            if (command != 106)
+                keyCommands[i] = command;
+            else
+                keyCommands[i] = -1;
+            command++;
+
+        }
+
+    }
+    //Constructor for Existing Robot.
+    public StringBotFinal(Robot rbt) throws AWTException{
+
+        myRobot = new Robot();
+
+    }
+    //Method to process full String
+    public void multipleKeyPress(String keys) throws AWTException{
+        Scanner in = new Scanner(keys);
+        in.useDelimiter("");
+        String delimiter = "";
+        boolean upperCase = false;
+        while (in.hasNext()){
+            String cur = in.next();
+
+            if (Character.isUpperCase(cur.charAt(0)))
+                upperCase = true;
+
+            if (cur.equals(" "))
+                myRobot.keyPress(KeyEvent.VK_SPACE);   
+
+            for (int i = 0; i < 29; i ++ ) {
+                if (cur.equals(listOfAllNonShiftCharacters.charAt(i)+"") && !upperCase){
+                    myRobot.keyPress(keyCommands[i]);
+                    myRobot.keyRelease(keyCommands[i]);
+                }
+                else if (cur.equals(listOfAllNonShiftCharacters.charAt(i)+"") && upperCase){
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
+                    myRobot.keyPress(keyCommands[i]);
+                    myRobot.keyRelease(keyCommands[i]);
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
+
+                }
+
+            }
+            for (int i = 29; i < 43; i ++ ){
+                if (cur.equals(listOfAllShiftCharacters.charAt(i)))
+                    myRobot.KeyPress(KeyEvent.VK_SHIFT);
+                myRobot.keyPress(keyCommands[i]);
+                myRobot.keyRelease(keyCommands[i]);
+                myRobot.keyPress(KeyEvent.VK_SHIFT);
+            }
+        }
+        upperCase = false;
+    }
+
+    //Method to process full File 
+    public void multipleKeyPress(File filename) throws IOException{
+        Scanner in = new Scanner(filename);
+        in.useDelimiter("");
+        String delimiter = "";
+        boolean upperCase = false;
+        while (in.hasNext()){
+            String cur = in.next();
+
+            if (Character.isUpperCase(cur.charAt(0)))
+                upperCase = true;
+
+            if (cur.equals(" "))
+                myRobot.keyPress(KeyEvent.VK_SPACE);   
+
+            for (int i = 0; i < 29; i ++ ) {
+                if (cur.equals(listOfAllNonShiftCharacters.charAt(i)+"") && !upperCase){
+                    myRobot.keyPress(keyCommands[i]);
+                    myRobot.keyRelease(keyCommands[i]);
+                }
+                else if (cur.equals(listOfAllNonShiftCharacters.charAt(i)+"") && upperCase){
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
+                    myRobot.keyPress(keyCommands[i]);
+                    myRobot.keyRelease(keyCommands[i]);
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
+
+                }
+
+            }
+            for (int i = 29; i < 43; i ++ ){
+                if (cur.equals(listOfAllShiftCharacters.charAt(i)))
+                    myRobot.KeyPress(KeyEvent.VK_SHIFT);
+                myRobot.keyPress(keyCommands[i]);
+                myRobot.keyRelease(keyCommands[i]);
+                myRobot.keyPress(KeyEvent.VK_SHIFT);
+            }
+        }
+        upperCase = false;
+    }
+}
