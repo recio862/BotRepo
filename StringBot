@@ -56,7 +56,7 @@ public class StringBotFinal
 
     }
     //Method to process full String
-    public void multipleKeyPress(String keys) throws AWTException{
+    public void multipleKeyPress(String keys) throws AWTException, IOException{
         Scanner in = new Scanner(keys);
         in.useDelimiter("");
         String delimiter = "";
@@ -86,7 +86,7 @@ public class StringBotFinal
             }
             for (int i = 29; i < 43; i ++ ){
                 if (cur.equals(listOfAllShiftCharacters.charAt(i)))
-                    myRobot.KeyPress(KeyEvent.VK_SHIFT);
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
                 myRobot.keyPress(keyCommands[i]);
                 myRobot.keyRelease(keyCommands[i]);
                 myRobot.keyPress(KeyEvent.VK_SHIFT);
@@ -96,7 +96,7 @@ public class StringBotFinal
     }
 
     //Method to process full File 
-    public void multipleKeyPress(File filename) throws IOException{
+    public void multipleKeyPress(File filename) throws AWTException, IOException{
         Scanner in = new Scanner(filename);
         in.useDelimiter("");
         String delimiter = "";
@@ -126,7 +126,7 @@ public class StringBotFinal
             }
             for (int i = 29; i < 43; i ++ ){
                 if (cur.equals(listOfAllShiftCharacters.charAt(i)))
-                    myRobot.KeyPress(KeyEvent.VK_SHIFT);
+                    myRobot.keyPress(KeyEvent.VK_SHIFT);
                 myRobot.keyPress(keyCommands[i]);
                 myRobot.keyRelease(keyCommands[i]);
                 myRobot.keyPress(KeyEvent.VK_SHIFT);
