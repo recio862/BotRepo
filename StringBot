@@ -52,7 +52,24 @@ public class StringBotFinal
     //Constructor for Existing Robot.
     public StringBotFinal(Robot rbt) throws AWTException{
 
-        myRobot = new Robot();
+       myRobot = new Robot();
+
+        keyCommands= new int[43];
+        int command = 65;
+        for (int i = 0; i < 29; i++){
+            keyCommands[i] = command;
+            command++;
+        }
+        command = 97;
+
+        for (int i = 29; i < 43; i++){
+            if (command != 106)
+                keyCommands[i] = command;
+            else
+                keyCommands[i] = -1;
+            command++;
+
+        }
 
     }
     //Method to process full String
