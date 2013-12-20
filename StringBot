@@ -12,7 +12,7 @@ import java.io.*;
  * a user to input a full string of keycodes, which will be 
  * processed one by one until the full string is output.
  * 
- * Program Status: IN
+ * Program Status: Not complete
  * 
  */
 public class StringBotFinal
